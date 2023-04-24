@@ -29,5 +29,19 @@ Obviamente na hora de traduzir tentarei manter mais focado em apenas traduzir de
     diagrama01.png
   # INDEX diagrama:
   [+1+] MouseListener (ponteiro que constantemente escuta por acoes/triggers de controle de mouse a.k.a qualquer movida de mouse ativa, quando componente ativo tambem provavelmente, entao seria tipo:
-QUANDO botao mouse esquerdo estiver apertado E o mouse trigger evento que espera movida de mouses for ativado, ou seja, quando .isso e o mouse mecher, o slider meche junto
+QUANDO botao mouse esquerdo estiver apertado E o mouse trigger evento que espera movida de mouses for ativado, ou seja, quando .isso e o mouse mecher, o slider meche junto.
+No arquivo Header do PluginEditor.h o adicionaremos:::juce::Slider midiVolume; // [1] 
+Agora podemos setar as propriedades do knob de slider com varias funcoes no editor do construtor. Devemos tambem chamar addAndMakeVisible (&midiVolume) para que o knob de slider se atrele ao editor GUI (display de tela). Adicione:::// these define the parameters of our slider object
+    midiVolume.setSliderStyle (juce::Slider::LinearBarVertical);
+    midiVolume.setRange (0.0, 127.0, 1.0);
+    midiVolume.setTextBoxStyle (juce::Slider::NoTextBox, false, 90, 0);
+    midiVolume.setPopupDisplayEnabled (true, false, this);
+    midiVolume.setTextValueSuffix (" Volume");
+    midiVolume.setValue(1.0);
+ 
+    // this function adds the slider to the editor
+    addAndMakeVisible (&midiVolume);
+    // em PluginEditor.cpp
+ 
+ As janelas JUCE possuem um metodo chamado resized() que se traduz para repaginar, ou em outro portugues, redimensionar, que eh chamado uma vez ao inicializar a janela e toda a vez que a janela eh redimensionada pelo usuario (se habilitado resizing). Podem ser posicionados relativos aos limites da tela.
   
