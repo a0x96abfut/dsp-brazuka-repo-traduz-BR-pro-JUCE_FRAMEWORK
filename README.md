@@ -44,4 +44,8 @@ Agora podemos setar as propriedades do knob de slider com varias funcoes no edit
     // em PluginEditor.cpp
  
  As janelas JUCE possuem um metodo chamado resized() que se traduz para repaginar, ou em outro portugues, redimensionar, que eh chamado uma vez ao inicializar a janela e toda a vez que a janela eh redimensionada pelo usuario (se habilitado resizing). Podem ser posicionados relativos aos limites da tela.
-  
+
+# Passar informacoes de controle para a classe do processador
+  Agora que temos algo controlavel para ajustar, mas que no momento nao controla nada. Preciamos interceptar dados MIDI e reposicionar as notas no volume em nosso slider (??) e isso sera feito no processador. 
+  Para que o slider possa controlar os efeitos MIDI na thread do processador precisamos criar uma nova variavel na mesma para que possamos fazer com que o slider altere os valores.
+  Para tal, criaremos uma nova variavel publica em:::? chamada noteOnVel (que provavelmente significaria ~nota ligada com envelope de volume (NOTE-On-Volume-EnveLope, por contexto, porem talvez nao seja bem isso~~)
