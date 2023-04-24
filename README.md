@@ -48,4 +48,9 @@ Agora podemos setar as propriedades do knob de slider com varias funcoes no edit
 # Passar informacoes de controle para a classe do processador
   Agora que temos algo controlavel para ajustar, mas que no momento nao controla nada. Preciamos interceptar dados MIDI e reposicionar as notas no volume em nosso slider (??) e isso sera feito no processador. 
   Para que o slider possa controlar os efeitos MIDI na thread do processador precisamos criar uma nova variavel na mesma para que possamos fazer com que o slider altere os valores.
-  Para tal, criaremos uma nova variavel publica em:::? chamada noteOnVel (que provavelmente significaria ~nota ligada com envelope de volume (NOTE-On-Volume-EnveLope, por contexto, porem talvez nao seja bem isso~~)
+  Para tal, criaremos uma nova variavel publica em:::PluginProcessor.h chamada noteOnVel (que provavelmente significaria ~nota ligada com envelope de volume (NOTE-On-Volume-EnveLope, por contexto, porem talvez nao seja bem isso~~)
+  codigo a ser adicionado em PluginProcessor.h:::public:
+    float noteOnVel;
+    \-> Precisamos do valor desta variavel sempre que o slider for mudado, para isso usamos uma funcao de listenning callback no slider. Qaulquer classe pode herdar dessa funcionalidade, ai que ta o OURO!!! (ainda nao traduzido aqui, mas ta ai, https://docs.juce.com/master/tutorial_listeners_and_broadcasters.html)
+    Para o proposito desse tutorial adicionaremos a classe de editor PluginEditor.h,
+    adicione private juce::Slider::Listener     // [2] para a classe PluginAudioProcessorEditor e adicione void sliderValueChanged (juce::Slider* slider) override; // [3] em private no mesmo bloco.
