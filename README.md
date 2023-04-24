@@ -21,4 +21,13 @@ Obviamente na hora de traduzir tentarei manter mais focado em apenas traduzir de
       setSize (200, 200);
   }
  ###
+ 
+ # Criando um simples controle de interface grafica a.k.a GUI (display de tela)
+ criaremos um simples \\slider// que mudara o volume das mensagens MIDI na medida em que os sinais/dados MIDI chegam
+  # diagrama de [-linhagem/->[herdou)(de]](inheritance) da classe Slider
+    Diagrama indexado:
+    diagrama01.png
+  # INDEX diagrama:
+  [+1+] MouseListener (ponteiro que constantemente escuta por acoes/triggers de controle de mouse a.k.a qualquer movida de mouse ativa, quando componente ativo tambem provavelmente, entao seria tipo:
+QUANDO botao mouse esquerdo estiver apertado E o mouse trigger evento que espera movida de mouses for ativado, ou seja, quando .isso e o mouse mecher, o slider meche junto
   
